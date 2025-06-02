@@ -1,6 +1,6 @@
 // Food data with categories and images
 const FOOD_DATA = [
-    { id: 'apple', name: 'Apple', calories: 95, category: 'fruits', image: 'https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/photo-1619066045029-5c7e8537bd8c' },
+    { id: 'apple', name: 'Alma', calories: 95, category: 'fruits', image: 'https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/photo-1619066045029-5c7e8537bd8c' },
     { id: 'banana', name: 'Banana', calories: 105, category: 'fruits', image: 'https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/photo-1619066045029-5c7e8537bd8c' },
     { id: 'burger', name: 'Burger', calories: 350, category: 'fast-food', image: 'https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/photo-1565299624946-b28f40a0ae38' },
     { id: 'pizza', name: 'Pizza Slice', calories: 285, category: 'fast-food', image: 'https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/photo-1565299624946-b28f40a0ae38' },
