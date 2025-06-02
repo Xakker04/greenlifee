@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenLife - Food to Exercise Calculator</title>
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://lib.youware.com/youware-lib.1747145198.js" id="yourware-lib"></script></head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/vegetables-29063_150.png" alt="GreenLife" class="logo-img">
+                <h1>GreenLife</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#calculator">Kalkulyator</a></li>
+                    <li><a href="#chart">diagramma</a></li>
+                    <li><a href="#tips">Maslahatlar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Qancha mashq qilish kerakligini bilib oling</h2>
+                <p>Kilo yo'qotish maqsadlariga erishish uchun oziq-ovqat kaloriyalaringizni yurish, yugurish va velosipedda yurish vaqtiga aylantiring</p>
+                
+                <div class="hero-image-container">
+                    <img src="men.jpg" alt="Woman Running" class="hero-image">
+                    <img src="https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/photo-1565299624946-b28f40a0ae38" alt="Pizza" class="food-image food-image-1">
+                    <img src="https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/photo-1512003867696-6d5ce6835040" alt="Salad" class="food-image food-image-2">
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#calculator" class="btn">Hisoblash</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h3>Mashq qilish uchun oziq-ovqat kalkulyatori</h3>
+            
+            <div class="calculator-intro">
+                <p>Sevimli ovqatlaringizdan kaloriyalarni yoqish uchun qancha vaqt yurishingiz, yugurishingiz yoki velosipedda yurishingiz kerakligini aniq ko'ring. Ushbu oddiy qadamlarni bajaring:</p>
+            </div>
+            
+            <div class="steps-container">
+                <div id="step1" class="step active">
+                    <div class="step-number">1</div>
+                    <span>Ovqat tanlang</span>
+                </div>
+                <div id="step2" class="step">
+                    <div class="step-number">2</div>
+                    <span>vaznni kiriting</span>
+                </div>
+                <div id="step3" class="step">
+                    <div class="step-number">3</div>
+                    <span>Natijani koring</span>
+                </div>
+            </div>
+            
+            <div class="calculator-grid">
+                <div class="food-input">
+                    <h4>Ovqatingizni tanlang</h4>
+                    
+                    <!-- Visual Food Selection -->
+                    <div id="foodCategories" class="food-categories">
+                        <!-- Categories will be added by JavaScript -->
+                    </div>
+                    
+                    <div id="foodGrid" class="food-grid">
+                        <!-- Food items will be added by JavaScript -->
+                    </div>
+                    
+                    <div class="selected-food-display" id="selectedFoodDisplay" style="display: none;">
+                        <img id="selectedFoodImg" src="" alt="Selected food" class="selected-food-img">
+                        <div class="selected-food-info">
+                            <h5 id="selectedFoodName">Food Name</h5>
+                            <p id="selectedFoodCalories">0 calories</p>
+                        </div>
+                        <button id="addToMealBtn" class="btn-small btn-secondary" disabled>Ovqat qoshing</button>
+                    </div>
+                    
+                    <div class="or-divider">OR</div>
+                    
+                    <!-- Traditional Dropdown -->
+                    <div class="food-selector">
+                        <select id="foodSelect">
+                            <option value="0">Select a food item</option>
+                            <option value="150">Apple (1 medium) - 150 cal</option>
+                            <option value="95">Banana (1 medium) - 95 cal</option>
+                            <option value="280">Cheeseburger - 280 cal</option>
+                            <option value="540">Big Mac - 540 cal</option>
+                            <option value="150">Pizza slice - 150 cal</option>
+                            <option value="200">Donut - 200 cal</option>
+                            <option value="240">Chocolate bar - 240 cal</option>
+                            <option value="140">Can of Coke - 140 cal</option>
+                            <option value="120">Glass of wine - 120 cal</option>
+                            <option value="150">Beer (12 oz) - 150 cal</option>
+                            <option value="90">Rice (1 cup) - 90 cal</option>
+                            <option value="110">Bread (1 slice) - 110 cal</option>
+                        </select>
+                        <input type="number" id="customCalories" placeholder="Or enter custom calories" min="1">
+                    </div>
+                    
+                    <div class="weight-input">
+                        <label for="userWeight">Sizning vazningiz (kg):</label>
+                        <input type="number" id="userWeight" value="150" min="80" max="350">
+                    </div>
+                    
+                    <button id="calculateBtn" class="calculate-btn">Mashq vaqtini hisoblang</button>
+                </div>
+                
+                <div class="results">
+                    <h4>Kaloriyalarni yoqotish uchun vaqt kerak</h4>
+                    
+                    <div class="exercise-results">
+                        <div class="exercise-card walking">
+                            <img src="https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/woman-1822459_150.jpg" alt="Walking">
+                            <h5>Yurish (3 mph)</h5>
+                            <div class="time-result" id="walkingTime">0 daqiqa</div>
+                        </div>
+                        <div class="exercise-card running">
+                            <img src="https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/man-8293794_150.jpg" alt="Running">
+                            <h5>Yugurish (6 mph)</h5>
+                            <div class="time-result" id="runningTime">0 daqiqa</div>
+                        </div>
+                        <div class="exercise-card cycling">
+                            <img src="https://public.youware.com/users-website-assets/prod/9efba591-77dc-4b67-aa6b-2890ca486213/silhouette-683751_150.jpg" alt="Cycling">
+                            <h5>Velosport (12 mph)</h5>
+                            <div class="time-result" id="cyclingTime">0 daqiqa</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Meal Builder Toggle -->
+                <div class="meal-builder-toggle">
+                    <button id="toggleMealBuilder" class="btn">
+                        <i class="fas fa-plus"></i> Build a Meal
+                    </button>
+                </div>
+                
+                <!-- Meal Builder Section -->
+                <div id="mealBuilder" class="meal-builder">
+                    <h4>Meal Builder</h4>
+                    
+                    <div class="meal-tabs">
+                        <div class="meal-tab active">Current Meal</div>
+                        <div class="meal-tab">Saved Meals</div>
+                        <div class="meal-tab">Meal Comparison</div>
+                    </div>
+                    
+                    <!-- Current Meal Tab -->
+                    <div class="meal-content active">
+                        <div id="mealItems" class="meal-items">
+                            <p>No items in your meal yet. Add foods to build your meal.</p>
+                        </div>
+                        
+                        <div class="meal-summary">
+                            <div class="summary-row">
+                                <div class="summary-label">Total Calories:</div>
+                                <div class="summary-value" id="mealTotalCalories">0</div>
+                            </div>
+                            <div class="summary-row">
+                                <div class="summary-label">Walking Time:</div>
+                                <div class="summary-value" id="mealWalkingTime">0 minutes</div>
+                            </div>
+                            <div class="summary-row">
+                                <div class="summary-label">Running Time:</div>
+                                <div class="summary-value" id="mealRunningTime">0 minutes</div>
+                            </div>
+                            <div class="summary-row">
+                                <div class="summary-label">Cycling Time:</div>
+                                <div class="summary-value" id="mealCyclingTime">0 minutes</div>
+                            </div>
+                        </div>
+                        
+                        <div class="meal-actions">
+                            <button id="clearMealBtn" class="btn btn-danger" disabled>Clear Meal</button>
+                            <button id="saveMealBtn" class="btn" disabled>Save Meal</button>
+                            <button id="compareBtn" class="btn btn-accent" disabled>Compare</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Saved Meals Tab -->
+                    <div class="meal-content">
+                        <div id="savedMeals" class="saved-meals">
+                            <p>No saved meals yet. Create and save a meal to see it here.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Meal Comparison Tab -->
+                    <div class="meal-content">
+                        <p>Add meals to compare their exercise requirements side by side.</p>
+                        
+                        <div id="mealComparison" class="meal-comparison" style="display: none;">
+                            <!-- Comparison meals will be added dynamically -->
+                        </div>
+                        
+                        <div class="meal-actions" style="margin-top: 20px;">
+                            <button onclick="clearComparison()" class="btn btn-danger">Clear Comparison</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Section -->
+    <section id="chart" class="chart-section">
+        <div class="container">
+            <h3>Mashqlarni taqqoslash jadvali</h3>
+            
+            <div class="chart-container">
+                <canvas id="exerciseChart" width="400" height="200"></canvas>
+                
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color walking-color"></div>
+                        <span>Yurish (3 mph)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color running-color"></div>
+                        <span>Yugurish (6 mph)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color cycling-color"></div>
+                        <span>Velosport (12 mph)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <h3>Ortiqcha vaznni yoqotish boyicha maslahatlar</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>🚶‍♀️ Yurish</h4>
+                    <p>Yangi boshlanuvchilar uchun kam ta'sirli mashq. Optimal sog'liq uchun foyda olish uchun kuniga 10 000 qadamni maqsad qiling.</p>
+                    <div class="tip-fact">Bilasizmi? Kuniga atigi 30 daqiqa yurish yurak xastaligi xavfini 19 foizga kamaytiradi.</div>
+                </div>
+                <div class="tip-card">
+                    <h4>🏃‍♂️ Yugurish</h4>
+                    <p>Kaloriyalarni tezda yoqib yuboradigan yuqori intensiv kardio. Qisqa oraliqlardan boshlang va asta-sekin davomiylikni oshiring.</p>
+                    <div class="tip-fact">5 daqiqalik yugurish 10 daqiqa velosiped haydash yoki 15 daqiqa yurish bilan bir xil kaloriyalarni yoqadi.</div>
+                </div>
+                <div class="tip-card">
+                    <h4>🚴‍♀️ Velosport</h4>
+                    <p>Yurak-qon tomir salomatligi va oyoq kuchi uchun juda yaxshi. Turli xillik uchun ichki va tashqi velosipedni aralashtiramiz.</p>
+                    <div class="tip-fact">O'rtacha tezlikda velosiped haydash 150 kilogrammli odam uchun soatiga taxminan 300 kaloriya yoqadi.</div>
+                </div>
+                <div class="tip-card">
+                    <h4>🥗 Oziqlanish</h4>
+                    <p>To'liq ovqatlar, yog'siz oqsillar va sabzavotlarga e'tibor qarating. Esingizda bo'lsin: vazn yo'qotish - bu 70% parhez, 30% jismoniy mashqlar.</p>
+                    <div class="tip-fact">Ovqatlanishdan oldin suv ichish ishtahani kamaytiradi va kamroq kaloriya iste'mol qilishga yordam beradi.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Save Meal Modal -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div id="saveMealModal" class="modal">
+            <div class="modal-header">
+                <h4>Save Your Meal</h4>
+                <button id="modalClose" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Give your meal a name to save it for future reference.</p>
+                
+                <div style="margin: 15px 0;">
+                    <label for="mealNameInput">Meal Name:</label>
+                    <input type="text" id="mealNameInput" placeholder="Enter a name for your meal">
+                </div>
+                
+                <div class="meal-summary">
+                    <div class="summary-row">
+                        <div class="summary-label">Total Calories:</div>
+                        <div class="summary-value" id="modalMealCalories">0</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Items:</div>
+                        <div class="summary-value" id="modalMealItems">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button id="saveMealConfirm" class="btn">Save Meal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                
+                <div class="footer-links">
+                    <a href="#calculator">Kalkulyator</a>
+                    <a href="#chart">Diagramma</a>
+                    <a href="#tips">Maslahatlar</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
